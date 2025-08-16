@@ -1,8 +1,9 @@
 // js/store.js - Manages IndexedDB and application state.
 
 const DB_NAME = 'smartGroceryDB';
-const DB_VERSION = 1;
+const DB_VERSION = 2; // Incremented version
 const GROCERY_STORE_NAME = 'groceries';
+const PREFS_STORE_NAME = 'preferences';
 
 let db;
 
@@ -15,6 +16,9 @@ function initDB() {
             if (!db.objectStoreNames.contains(GROCERY_STORE_NAME)) {
                 const store = db.createObjectStore(GROCERY_STORE_NAME, { keyPath: 'id', autoIncrement: true });
                 store.createIndex('category', 'category', { unique: false });
+            }
+            if (!db.objectStoreNames.contains(PREFS_STORE_NAME)) {
+                db.createObjectStore(PREFS_STORE_NAME, { keyPath: 'id' });
             }
         };
 
@@ -134,6 +138,47 @@ function seedDatabase() {
     return Promise.all(seedItems.map(item => addGroceryItem(item)));
 }
 
+function savePreferences(prefs) {
+    return new Promise((resolve, reject) => {
+        if (!db) {
+            reject('Database not initialized');
+            return;
+        }
+        const transaction = db.transaction([PREFS_STORE_NAME], 'readwrite');
+        const store = transaction.objectStore(PREFS_STORE_NAME);
+        // Use a fixed key for preferences so we always update the same record
+        const request = store.put({ id: 'user-preferences', ...prefs });
+
+        request.onsuccess = () => {
+            resolve();
+        };
+
+        request.onerror = (event) => {
+            reject('Error saving preferences: ' + event.target.error);
+        };
+    });
+}
+
+function getPreferences() {
+    return new Promise((resolve, reject) => {
+        if (!db) {
+            reject('Database not initialized');
+            return;
+        }
+        const transaction = db.transaction([PREFS_STORE_NAME], 'readonly');
+        const store = transaction.objectStore(PREFS_STORE_NAME);
+        const request = store.get('user-preferences');
+
+        request.onsuccess = () => {
+            resolve(request.result || {}); // Return empty object if no prefs found
+        };
+
+        request.onerror = (event) => {
+            reject('Error getting preferences: ' + event.target.error);
+        };
+    });
+}
+
 // Export functions to be called from other scripts
 window.db = {
     initDB,
@@ -141,5 +186,7 @@ window.db = {
     getAllGroceryItems,
     deleteGroceryItem,
     updateGroceryItem,
-    seedDatabase
+    seedDatabase,
+    savePreferences,
+    getPreferences
 };

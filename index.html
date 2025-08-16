@@ -162,5 +162,37 @@
             </div>
         </div>
     </div>
+
+    <!-- Agent Mode Preferences Modal -->
+    <div id="agent-prefs-modal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-2xl p-8 w-full max-w-md">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Agent Preferences</h2>
+                <button id="agent-prefs-close-btn" class="p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <form id="agent-prefs-form">
+                <div class="mb-4">
+                    <label for="pref-budget" class="block text-sm font-medium mb-1">Weekly Grocery Budget ($)</label>
+                    <input type="number" id="pref-budget" placeholder="e.g., 150" class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600">
+                </div>
+                <div class="mb-4">
+                    <label for="pref-diet" class="block text-sm font-medium mb-1">Dietary Preference</label>
+                    <select id="pref-diet" class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600">
+                        <option>Balanced</option>
+                        <option>Vegan</option>
+                        <option>Keto</option>
+                        <option>Vegetarian</option>
+                    </select>
+                </div>
+                <div class="mb-6">
+                    <label for="pref-cuisines" class="block text-sm font-medium mb-1">Favorite Cuisines</label>
+                    <input type="text" id="pref-cuisines" placeholder="e.g., Italian, Mexican, Indian" class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600">
+                </div>
+                <button type="submit" class="w-full bg-primary hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Save Preferences</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

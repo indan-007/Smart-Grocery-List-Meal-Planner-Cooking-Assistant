@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.chatbot) {
         window.chatbot.init();
     }
+    if (window.agent) {
+        window.agent.init();
+    }
 
     const addItemForm = document.getElementById('add-grocery-form');
 
