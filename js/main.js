@@ -3,6 +3,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize UI components
     window.ui.initTheme();
+    if (window.chatbot) {
+        window.chatbot.init();
+    }
 
     const addItemForm = document.getElementById('add-grocery-form');
 
