@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A smart grocery list, meal planner, and cooking assistant application.">
+    <!-- TODO: Add icons to assets and re-enable manifest -->
+    <!-- <link rel="manifest" href="manifest.json"> -->
+    <title>Smart Grocery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4CAF50',
+                        secondary: '#FFC107',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+
+    <header class="bg-white dark:bg-gray-800 shadow-md">
+        <div class="container mx-auto px-4 py-6 flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Smart Grocery</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="#grocery" class="hover:text-green-500">Grocery List</a></li>
+                    <li><a href="#planner" class="hover:text-green-500">Meal Planner</a></li>
+                    <li><a href="#recipes" class="hover:text-green-500">Recipes</a></li>
+                    <li><a href="#analytics" class="hover:text-green-500">Analytics</a></li>
+                </ul>
+            </nav>
+            <button id="theme-toggle" class="p-2 rounded-full focus:outline-none focus:ring-2 focus:ring-primary">
+                <svg id="theme-icon-light" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.66-15.66l-.707.707M4.34 19.66l-.707.707m15.66 0l-.707-.707M4.34 4.34l-.707-.707m1.414 11.314h-1.414m16.97 0h-1.414M12 5a7 7 0 100 14 7 7 0 000-14z"></path></svg>
+                <svg id="theme-icon-dark" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <!-- Grocery List Management Section -->
+        <section id="grocery" class="mb-12">
+            <h2 class="text-3xl font-bold mb-4">Grocery List</h2>
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                <!-- Add Grocery Item Form -->
+                <form id="add-grocery-form" class="mb-6">
+                    <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+                        <input type="text" id="item-name" placeholder="Item Name" class="col-span-1 md:col-span-2 p-2 border rounded dark:bg-gray-700 dark:border-gray-600" required>
+                        <select id="item-category" class="p-2 border rounded dark:bg-gray-700 dark:border-gray-600">
+                            <option>Pantry</option>
+                            <option>Fridge</option>
+                            <option>Freezer</option>
+                            <option>Produce</option>
+                            <option>Meat</option>
+                            <option>Dairy</option>
+                            <option>Bakery</option>
+                            <option>Household</option>
+                        </select>
+                        <input type="number" id="item-quantity" value="1" min="1" class="p-2 border rounded dark:bg-gray-700 dark:border-gray-600">
+                        <button type="submit" class="bg-primary hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Add Item</button>
+                    </div>
+                </form>
+
+                <!-- Grocery List -->
+                <div id="grocery-list" class="space-y-4">
+                    <!-- Grocery items will be rendered here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Meal Planner Section -->
+        <section id="planner" class="mb-12">
+            <h2 class="text-3xl font-bold mb-4">Meal Planner</h2>
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                <!-- Content will go here -->
+                <p>Meal planner will be implemented here.</p>
+            </div>
+        </section>
+
+        <!-- Recipe Browser Section -->
+        <section id="recipes" class="mb-12">
+            <h2 class="text-3xl font-bold mb-4">Recipe Browser</h2>
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                <!-- Content will go here -->
+                <p>Recipe browser will be implemented here.</p>
+            </div>
+        </section>
+
+        <!-- Spending Analytics Section -->
+        <section id="analytics" class="mb-12">
+            <h2 class="text-3xl font-bold mb-4">Spending Analytics</h2>
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                <!-- Content will go here -->
+                <p>Spending analytics will be implemented here.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white dark:bg-gray-800 mt-12 py-6 text-center text-sm">
+        <p>&copy; 2024 Smart Grocery. All rights reserved.</p>
+    </footer>
+
+    <script src="js/store.js" defer></script>
+    <script src="js/ui.js" defer></script>
+    <script src="js/pwa.js" defer></script>
+    <script src="js/recipes.js" defer></script>
+    <script src="js/planner.js" defer></script>
+    <script src="js/charts.js" defer></script>
+    <script src="js/main.js" defer></script>
+</body>
+</html>

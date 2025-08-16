@@ -1,0 +1,21 @@
+{
+    "name": "Smart Grocery",
+    "short_name": "SmartGrocery",
+    "description": "A smart grocery list, meal planner, and cooking assistant.",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#4CAF50",
+    "icons": [
+        {
+            "src": "assets/icons/icon-192x192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "assets/icons/icon-512x512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ]
+}
