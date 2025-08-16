@@ -6,6 +6,7 @@
     <meta name="description" content="A smart grocery list, meal planner, and cooking assistant application.">
     <!-- TODO: Add icons to assets and re-enable manifest -->
     <!-- <link rel="manifest" href="manifest.json"> -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <title>Smart Grocery</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -83,12 +84,19 @@
             </div>
         </section>
 
-        <!-- Recipe Browser Section -->
+        <!-- AI Recipe Suggestion Section -->
         <section id="recipes" class="mb-12">
-            <h2 class="text-3xl font-bold mb-4">Recipe Browser</h2>
+            <h2 class="text-3xl font-bold mb-4">AI Recipe Suggestions</h2>
             <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                <!-- Content will go here -->
-                <p>Recipe browser will be implemented here.</p>
+                <div class="mb-4">
+                    <label for="ingredients-input" class="block text-lg font-medium mb-2">Enter ingredients you have:</label>
+                    <textarea id="ingredients-input" rows="3" class="w-full p-2 border rounded dark:bg-gray-700 dark:border-gray-600" placeholder="e.g., chicken, rice, tomatoes, onion"></textarea>
+                </div>
+                <button id="get-recipes-btn" class="bg-secondary hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded">Get Recipes</button>
+
+                <div id="recipe-suggestions-container" class="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- AI-generated recipe cards will be displayed here -->
+                </div>
             </div>
         </section>
 
@@ -112,6 +120,7 @@
     <script src="js/recipes.js" defer></script>
     <script src="js/planner.js" defer></script>
     <script src="js/charts.js" defer></script>
+    <script src="js/ai.js" defer></script>
     <script src="js/main.js" defer></script>
 </body>
 </html>

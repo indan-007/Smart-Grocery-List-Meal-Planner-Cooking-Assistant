@@ -48,6 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const groceryListContainer = document.getElementById('grocery-list');
+    const getRecipesBtn = document.getElementById('get-recipes-btn');
+    const ingredientsInput = document.getElementById('ingredients-input');
 
     // Handle the form submission for adding a new item
     addItemForm.addEventListener('submit', (event) => {
@@ -109,5 +111,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         }
+    });
+
+    // Handle click for getting AI recipe suggestions
+    getRecipesBtn.addEventListener('click', () => {
+        const ingredients = ingredientsInput.value;
+        if (!ingredients.trim()) {
+            alert('Please enter some ingredients.');
+            return;
+        }
+
+        // Show loading state
+        getRecipesBtn.disabled = true;
+        getRecipesBtn.textContent = 'Searching for recipes...';
+        window.ui.renderRecipeSuggestions(null); // Clear previous results and show loading/empty message
+
+        window.ai.getAIRecipeSuggestions(ingredients)
+            .then(recipes => {
+                window.ui.renderRecipeSuggestions(recipes);
+            })
+            .catch(error => {
+                console.error('Failed to get recipe suggestions:', error);
+                alert('Could not fetch recipe suggestions.');
+                window.ui.renderRecipeSuggestions([]); // Render empty state on error
+            })
+            .finally(() => {
+                // Restore button state
+                getRecipesBtn.disabled = false;
+                getRecipesBtn.textContent = 'Get Recipes';
+            });
     });
 });

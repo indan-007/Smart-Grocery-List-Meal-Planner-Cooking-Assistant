@@ -80,4 +80,10 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ---
 
+## ⭐ Star This Repo
+
+If you find this project useful or interesting, please consider giving it a star! It helps motivate me to improve the project and shows your appreciation. Thank you!
+
+---
+
 *This project is designed to showcase best practices in modern, frontend web development without relying on heavy frameworks.*

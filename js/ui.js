@@ -96,9 +96,31 @@ function initTheme() {
     });
 }
 
+const recipeSuggestionsContainer = document.getElementById('recipe-suggestions-container');
+
+function renderRecipeSuggestions(recipes) {
+    recipeSuggestionsContainer.innerHTML = '';
+
+    if (!recipes || recipes.length === 0) {
+        recipeSuggestionsContainer.innerHTML = '<p class="text-center text-gray-500 col-span-full">No recipe suggestions found for the given ingredients. Try some other ingredients!</p>';
+        return;
+    }
+
+    recipes.forEach(recipe => {
+        const recipeCard = document.createElement('div');
+        recipeCard.className = 'bg-gray-50 dark:bg-gray-700 p-4 rounded-lg shadow';
+        recipeCard.innerHTML = `
+            <h3 class="text-xl font-bold mb-2">${recipe.title}</h3>
+            <p class="text-gray-600 dark:text-gray-300">${recipe.description}</p>
+        `;
+        recipeSuggestionsContainer.appendChild(recipeCard);
+    });
+}
+
 window.ui = {
     renderGroceryList,
     clearAddItemForm,
     getAddItemFormValue,
-    initTheme
+    initTheme,
+    renderRecipeSuggestions
 };
